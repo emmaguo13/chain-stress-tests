@@ -62,7 +62,7 @@ Time in milliseconds from when the stress test begins and ends. If 1 txn is sent
 
 There is some extra time taken to retrieve the txn receipt in this time, so it may not be the most accurate for tps measurement.
 
-## Transaction hashes
+## TPS
 Instead of using the time in milliseconds for tps, one interesting way of measuring tps is to consider block time and the amount of txns you can fit in a block.
 
 To measure tps with the above method, run a stress test with a max tps value higher than the tps you anticipate, and a max number of addresses that is not too low (around 50 for 1k txns is a good, and any higher probably will not benefit the result that much). After the stress tests have been run, find the block number including the txns you've sent, and divide the number of txns in that block with the block time. 
