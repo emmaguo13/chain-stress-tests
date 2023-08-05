@@ -49,7 +49,7 @@ yarn start sendEth 1000 --http https://l2-civic-ivory-ferret-s24oysp9jl.t.condui
 
 ## Triton testnet
 ```
-yarn start sendEth 1000 --http https://triton.api.nautchain.xyz --pKey <faicet private key> --chainId 91002 -g 2400000000 -n 100 -t 1000000
+yarn start sendEthNaut 1000 --http https://triton.api.nautchain.xyz --pKey <faicet private key> --chainId 91002 -g 2400000000 -n 100 -t 1000000
 ```
 
 # Benchmarking
