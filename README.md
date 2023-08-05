@@ -39,6 +39,32 @@ yarn start hash
     --pKey <faucet private key>
 ```
 
+# Examples
+
+## Custom Optimism chain
+```
+yarn start sendEth 1000 --http https://l2-civic-ivory-ferret-s24oysp9jl.t.conduit.xyz --pKey <faucet private key> --chainId 999999999 -g 2400000000 -n 50 -t 10000
+
+```
+
+## Triton testnet
+```
+yarn start sendEth 1000 --http https://triton.api.nautchain.xyz --pKey <faicet private key> --chainId 91002 -g 2400000000 -n 100 -t 1000000
+```
+
+# Benchmarking
+
+## Which metrics are considered
+Time, latency, as well as the transaction hashes used to find the block.
+
+## Time
+Time in milliseconds from when the stress test begins and ends. If 1 txn is sent, the time =/= the latency of that txn, as the latency is measured separately. This is the best metric for measuring how long it actually takes to send the number of txns you wish to send, and received all the finalized txns.
+
+There is some extra time taken to retrieve the txn receipt in this time, so it may not be the most accurate for tps measurement.
+
+## Transaction hashes
+Instead of using the time in milliseconds for tps, one interesting way of measuring tps is to consider block time and the amount of txns you can fit in a block.
+
 # Running stress-tests
 
 Stress-test parameters can be specified in `src/config.ts` and in the command-line (non-exhaustive). The latter takes preference.
