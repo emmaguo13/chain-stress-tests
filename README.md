@@ -49,13 +49,13 @@ yarn start sendEth 1000 --http https://l2-civic-ivory-ferret-s24oysp9jl.t.condui
 
 ## Triton testnet
 ```
-yarn start sendEthNaut 1000 --http https://triton.api.nautchain.xyz --pKey <faicet private key> --chainId 91002 -g 2400000000 -n 100 -t 1000000
+yarn start sendEthNaut 1000 --http https://triton.api.nautchain.xyz --pKey <faicet private key> --chainId 91002 -g 2400000000 -n 50 -t 1000000
 ```
 
 # Benchmarking
 
 ## Which metrics are considered
-Time, latency, as well as the transaction hashes used to find the block.
+Time, latency, block numbers.
 
 ## Time
 Time in milliseconds from when the stress test begins and ends. If 1 txn is sent, the time =/= the latency of that txn, as the latency is measured separately. This is the best metric for measuring how long it actually takes to send the number of txns you wish to send, and received all the finalized txns.
@@ -64,6 +64,12 @@ There is some extra time taken to retrieve the txn receipt in this time, so it m
 
 ## Transaction hashes
 Instead of using the time in milliseconds for tps, one interesting way of measuring tps is to consider block time and the amount of txns you can fit in a block.
+
+To measure tps with the above method, run a stress test with a max tps value higher than the tps you anticipate, and a max number of addresses that is not too low (around 50 for 1k txns is a good, and any higher probably will not benefit the result that much). After the stress tests have been run, find the block number including the txns you've sent, and divide the number of txns in that block with the block time. 
+
+You will get the block numbers through the stress test, or you can choose one txn hash from the logged txn hashes from the stress test, and find which block the txns have been included in to look at the block on the block explorer. I would recommend searching for the block on the block explorer to get the exact number of txns included in the block.
+
+Goerli optimism block explorer: https://explorerl2new-civic-ivory-ferret-s24oysp9jl.t.conduit.xyz
 
 # Running stress-tests
 
